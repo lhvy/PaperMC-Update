@@ -1532,6 +1532,7 @@ if __name__ == '__main__':
 
     version.add_argument('-v', '--version', help='Server version to install(Sets default value)', default='latest', type=str)
     version.add_argument('-b', '--build', help='Server build to install(Sets default value)', default=-1, type=int)
+    version.add_argument('-cv', '--current-version', help='Set the server version to install as the current server version', action='store_true')
     version.add_argument('-iv', help='Sets the currently installed server version, ignores config', default='0', type=str)
     version.add_argument('-ib', help='Sets the currently installed server build, ignores config', default=0, type=int)
     version.add_argument('-sv', '--server-version', help="Displays server version from configuration file and exits", action='store_true')
@@ -1620,6 +1621,14 @@ if __name__ == '__main__':
         # Display stats to the terminal:
 
         serv.view_data()
+
+    # Check if we are using the current version:
+
+    if args.current_version:
+
+        # Use currently installed version
+
+        args.version = serv.version
 
     # Checking if we are skipping the update
 
